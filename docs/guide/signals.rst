@@ -9,7 +9,7 @@ Signals
 .. note::
   
   Signals é suportado pela excelente biblioteca `blinker`_. Se você deseja ter o
-  suporte aos signals disponíveis é necessário instalá-la, no entanto, está 
+  suporte aos signals disponíveis é necessário instalá-la, no entanto está 
   biblioteca não é requerida para o MongoEngine funcionar.
   
 
