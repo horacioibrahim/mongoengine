@@ -21,9 +21,9 @@ specified signals receive no additional arguments beyond the `sender` class and
 `document` instance.  Post-signals are only called if there were no exceptions
 raised during the processing of their related function.
 
-Signals são encontrados dentro do módulo `mongoengine.signals` . Exceto se você
+Signals são encontrados dentro do módulo `mongoengine.signals`. Exceto se você
 tiver especificado um sinal para receber sem qualquer argumento adicional, além
-da classe emitente (o `sender` ) e da instância `document` . 
+da classe emitente (o `sender`) e da instância `document`. 
 Post-signals somente serão chamados se nenhuma exceção for levantada durante o 
 processamento das suas funções relacionadas.
 
