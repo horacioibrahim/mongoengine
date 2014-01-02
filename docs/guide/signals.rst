@@ -16,64 +16,61 @@ Signals
 Overview
 --------
 
-Signals are found within the `mongoengine.signals` module.  Unless
-specified signals receive no additional arguments beyond the `sender` class and
-`document` instance.  Post-signals are only called if there were no exceptions
-raised during the processing of their related function.
-
 Signals são encontrados dentro do módulo `mongoengine.signals`. Exceto se você
 tiver especificado um sinal para receber sem qualquer argumento adicional, além
 da classe emitente (o `sender`) e da instância `document`. 
 Post-signals somente serão chamados se nenhuma exceção for levantada durante o 
 processamento das suas funções relacionadas.
 
-Available signals include:
+Signals disponíveis são:
 
 `pre_init`
-  Called during the creation of a new :class:`~mongoengine.Document` or
-  :class:`~mongoengine.EmbeddedDocument` instance, after the constructor
-  arguments have been collected but before any additional processing has been
-  done to them.  (I.e. assignment of default values.)  Handlers for this signal
-  are passed the dictionary of arguments using the `values` keyword argument
-  and may modify this dictionary prior to returning.
+  Chamado durante a criação de um nova instância de :class:`~mongoengine.Document` or
+  :class:`~mongoengine.EmbeddedDocument`, após os argumentos passados no construtor
+  terem sido coletados, mas antes de qualquer processamento adicional ter sido feito 
+  com eles (ex.: definição de valores padrões). Manipuladores para esse sinal são passados
+  ao dicinário de argumentos usando os `values` dos argumentos nomeados e pode modificar
+  esse dicionario antes de retorná-lo.
 
 `post_init`
-  Called after all processing of a new :class:`~mongoengine.Document` or
-  :class:`~mongoengine.EmbeddedDocument` instance has been completed.
+  Chamado após todo o processamento de uma nova instância de :class:`~mongoengine.Document` or
+  :class:`~mongoengine.EmbeddedDocument` ter sido completada.
 
 `pre_save`
-  Called within :meth:`~mongoengine.document.Document.save` prior to performing
-  any actions.
+  Chamado dentro do método :meth:`~mongoengine.document.Document.save`, mas antes
+  de executrar qualquer ação.
 
 `pre_save_post_validation`
-  Called within :meth:`~mongoengine.document.Document.save` after validation
-  has taken place but before saving.
+  Chamado dentro do método :meth:`~mongoengine.document.Document.save` 
+  e após a validação ter sido feita, mas antes de salvar.
 
 `post_save`
-  Called within :meth:`~mongoengine.document.Document.save` after all actions
-  (validation, insert/update, cascades, clearing dirty flags) have completed
-  successfully.  Passed the additional boolean keyword argument `created` to
-  indicate if the save was an insert or an update.
+  Chamado dentro do método :meth:`~mongoengine.document.Document.save` 
+  e após todas as ações como validação, insert/update, 
+  cascades, clearing dirty flag serem completadas com sucesso. Um adicional valor
+  boolean é retornado como a palavra-chave `created` para indicar se a instância
+  salva foi inserida (insert) ou atualizada (update).
 
 `pre_delete`
-  Called within :meth:`~mongoengine.document.Document.delete` prior to
-  attempting the delete operation.
+  Chamado dentro do método :meth:`~mongoengine.document.Document.delete` e antes de operação delete.
 
 `post_delete`
-  Called within :meth:`~mongoengine.document.Document.delete` upon successful
-  deletion of the record.
+  Chamado dentro do método :meth:`~mongoengine.document.Document.delete` após a
+  operação delete ter sido realizada com sucesso.
 
 `pre_bulk_insert`
-  Called after validation of the documents to insert, but prior to any data
-  being written. In this case, the `document` argument is replaced by a
-  `documents` argument representing the list of documents being inserted.
+  Chamado após a validação dos documentos para um insert, mas antes de qualquer
+  dado ser escrito. Neste caso, o argumento `document` é repassado por argumentos 
+  `documents` que representam a lista de documents que está sendo inserido.
 
 `post_bulk_insert`
-  Called after a successful bulk insert operation.  As per `pre_bulk_insert`,
-  the `document` argument is omitted and replaced with a `documents` argument.
-  An additional boolean argument, `loaded`, identifies the contents of
-  `documents` as either :class:`~mongoengine.Document` instances when `True` or
-  simply a list of primary key values for the inserted records if `False`.
+  Chamado após uma operação em lote (bulk) ter sido realizada com sucesso. Como
+  para cada `pre_bulk_insert`, o argumento `document` é omitido e substituído por
+  uma lista de `documents`.
+  Um argumento boolean adicional chamado `loaded` indentifica o conteúdo de `documents`
+  como ambas instâncias :class:`~mongoengine.Document` quando `True` ou simplesmente uma
+  lista de chaves-primárias para os registros inseridos se `False`.
+  
 
 Attaching Events
 ----------------
