@@ -7,10 +7,11 @@ Signals
 .. versionadded:: 0.5
 
 .. note::
-
-  Signal support is provided by the excellent `blinker`_ library. If you wish
-  to enable signal support this library must be installed, though it is not
-  required for MongoEngine to function.
+  
+  Signals é suportado pela excelente biblioteca `blinker`_. Se você deseja ter o
+  suporte aos signals disponíveis é necessário instalá-la, no entanto, está 
+  biblioteca não é requerida para o MongoEngine funcionar.
+  
 
 Overview
 --------
@@ -19,6 +20,12 @@ Signals are found within the `mongoengine.signals` module.  Unless
 specified signals receive no additional arguments beyond the `sender` class and
 `document` instance.  Post-signals are only called if there were no exceptions
 raised during the processing of their related function.
+
+Signals são encontrados dentro do módulo `mongoengine.signals`. Exceto se você
+tiver especificado um sinal para receber sem qualquer argumento adicional, além
+da classe que emitente (o `sender`) e da instância `document`. 
+Post-signals somente serão chamados se nenhuma exceção for levantada durante o 
+processamento das suas funões relacionadas.
 
 Available signals include:
 
